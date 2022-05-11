@@ -4,7 +4,22 @@ if not status_ok then
 end
 
 configs.setup {
-  ensure_installed = "maintained", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
+  ensure_installed = {
+    "lua",
+    "rust",
+    "c",
+    "markdown",
+    "typescript",
+    "javascript",
+    "tsx",
+    "svelte",
+    "regex",
+    "python",
+    "html",
+    "css",
+    "go",
+    "dockerfile",
+  }, -- a list of languages or "all"(not recommended) 
   sync_install = false, -- install languages synchronously (only applied to `ensure_installed`)
   ignore_install = { "" }, -- List of parsers to ignore installing
   autopairs = {
