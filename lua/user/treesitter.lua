@@ -19,7 +19,7 @@ configs.setup {
     "css",
     "go",
     "dockerfile",
-  }, -- a list of languages or "all"(not recommended) 
+  }, -- a list of languages or "all"(not recommended)
   sync_install = false, -- install languages synchronously (only applied to `ensure_installed`)
   ignore_install = { "" }, -- List of parsers to ignore installing
   autopairs = {
