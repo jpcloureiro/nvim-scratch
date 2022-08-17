@@ -26,6 +26,7 @@ local options = {
   tabstop = 2,                             -- insert 2 spaces for a tab
   preserveindent = true,                    -- preserve as much of the indent structure as possible.
   cursorline = true,                       -- highlight the current line
+  guicursor = '',                          -- cursor format when in insert mode
   number = true,                           -- set numbered lines
   relativenumber = true,                   -- set relative numbered lines
   numberwidth = 4,                         -- set number column width to 2 {default 4}
