@@ -1,3 +1,12 @@
+local init_globals = {
+  loaded = 1,
+  loaded_netrwPlugin = 1,
+}
+
+for k, v in pairs(init_globals) do
+  vim.g[k] = v
+end
+
 local options = {
   backup = false,                          -- creates a backup file
   clipboard = "unnamedplus",               -- allows neovim to access the system clipboard

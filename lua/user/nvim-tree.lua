@@ -10,9 +10,8 @@ end
 
 local tree_cb = nvim_tree_config.nvim_tree_callback
 
-nvim_tree.setup {
+local tree_opts = {
 	auto_reload_on_write = true,
-  -- disable_netrw = true,
   disable_netrw = false,
 	hijack_cursor = false,
   hijack_netrw = true,
@@ -22,11 +21,9 @@ nvim_tree.setup {
   open_on_setup_file = false,
 	open_on_tab = false,
 	sort_by = "name",
-  -- update_cwd = true,
   update_cwd = false,
   view = {
     width = 40,
-    height = 30,
     hide_root_folder = false,
     side = "left",
     preserve_window_proportions = false,
@@ -153,15 +150,6 @@ nvim_tree.setup {
       profile = false,
     },
   },
-  -- quit_on_open = 0,
-  -- git_hl = 1,
-  -- disable_window_picker = 0,
-  -- root_folder_modifier = ":t",
-  -- show_icons = {
-  --   git = 1,
-  --   folders = 1,
-  --   files = 1,
-  --   folder_arrows = 1,
-  --   tree_width = 30,
-  -- },
 }
+
+nvim_tree.setup(tree_opts)
