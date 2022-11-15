@@ -11,16 +11,16 @@ end
 local tree_cb = nvim_tree_config.nvim_tree_callback
 
 local tree_opts = {
-	auto_reload_on_write = true,
+  auto_reload_on_write = true,
   disable_netrw = false,
-	hijack_cursor = false,
+  hijack_cursor = false,
   hijack_netrw = true,
-	hijack_unnamed_buffer_when_opening = false,
-	ignore_buffer_on_setup = false,
+  hijack_unnamed_buffer_when_opening = false,
+  ignore_buffer_on_setup = false,
   open_on_setup = false,
   open_on_setup_file = false,
-	open_on_tab = false,
-	sort_by = "name",
+  open_on_tab = false,
+  sort_by = "name",
   update_cwd = false,
   view = {
     width = 40,
@@ -30,7 +30,7 @@ local tree_opts = {
     number = false,
     relativenumber = false,
     signcolumn = "yes",
-		mappings = {
+    mappings = {
       custom_only = false,
       list = {
         { key = { "l", "<CR>", "o" }, cb = tree_cb "edit" },
@@ -39,8 +39,8 @@ local tree_opts = {
       },
     },
   },
-	renderer = {
-		indent_markers = {
+  renderer = {
+    indent_markers = {
       enable = false,
       icons = {
         corner = "└ ",
@@ -71,7 +71,7 @@ local tree_opts = {
         },
       },
     },
-	},
+  },
   hijack_directories = {
     enable = true,
     auto_open = true,
@@ -96,7 +96,7 @@ local tree_opts = {
   -- },
   diagnostics = {
     enable = true,
-		show_on_dirs = true,
+    show_on_dirs = true,
     icons = {
       hint = "",
       info = "",
@@ -107,14 +107,14 @@ local tree_opts = {
   filters = {
     dotfiles = false,
     custom = {},
-		exclude = {},
+    exclude = {},
   },
   git = {
     enable = true,
     ignore = true,
     timeout = 400,
   },
-	actions = {
+  actions = {
     use_system_clipboard = true,
     change_dir = {
       enable = true,
@@ -138,7 +138,7 @@ local tree_opts = {
     cmd = "trash",
     require_confirm = true,
   },
-	log = {
+  log = {
     enable = false,
     truncate = false,
     types = {
