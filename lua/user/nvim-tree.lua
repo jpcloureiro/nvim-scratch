@@ -1,16 +1,31 @@
 local status_ok, nvim_tree = pcall(require, "nvim-tree")
 if not status_ok then
+  vim.notify(nvim_tree, vim.log.levels.ERROR)
   return
 end
 
-local config_status_ok, nvim_tree_config = pcall(require, "nvim-tree.config")
-if not config_status_ok then
-  return
-end
+local function on_attach(bufnr)
+  local api_status_ok, nvim_tree_api = pcall(require, "nvim-tree.api")
+  if not api_status_ok then
+    vim.notify(nvim_tree, vim.log.levels.ERROR)
+    return
+  end
 
-local tree_cb = nvim_tree_config.nvim_tree_callback
+  local function opts (desc)
+    return { desc = 'nvim-tree: ' .. desc, buffer = bufnr, noremap = true, silent = true, nowait = true }
+  end
+
+  nvim_tree_api.config.mappings.default_on_attach(bufnr)
+
+  vim.keymap.set('n', '<CR>',  nvim_tree_api.node.open.edit,                    opts('Open'))
+  vim.keymap.set('n', 'l',     nvim_tree_api.node.open.edit,                    opts('Open'))
+  vim.keymap.set('n', 'o',     nvim_tree_api.node.open.edit,                    opts('Open'))
+  vim.keymap.set('n', 'h',     nvim_tree_api.node.navigate.parent_close,        opts('Close Directory'))
+  vim.keymap.set('n', 'v',     nvim_tree_api.node.open.vertical,                opts('Open: Vertical Split'))
+end
 
 local tree_opts = {
+  on_attach = on_attach,
   auto_reload_on_write = true,
   disable_netrw = false,
   hijack_cursor = false,
@@ -21,22 +36,14 @@ local tree_opts = {
   update_cwd = false,
   view = {
     width = 40,
-    hide_root_folder = true,
     side = "left",
     preserve_window_proportions = false,
     number = false,
     relativenumber = false,
     signcolumn = "yes",
-    mappings = {
-      custom_only = false,
-      list = {
-        { key = { "l", "<CR>", "o" }, cb = tree_cb "edit" },
-        { key = "h", cb = tree_cb "close_node" },
-        { key = "v", cb = tree_cb "vsplit" },
-      },
-    },
   },
   renderer = {
+    root_folder_label = false,
     indent_markers = {
       enable = false,
       icons = {
